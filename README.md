@@ -1,14 +1,4 @@
-# ComfyUI-Magic: 🔋Batteries🔋 included 
-
-## Why
-
-We're AI Art enthusiasts, developers, and artists. We wanted this to be easier for everyone to reliably use. 
-
-This work began in discord channels and through serendipity - it felt wrong not to give this back to everyone, so we open sourced it here.
-
-Preview: 
-
-[![asciicast](https://asciinema.org/a/621943.svg)](https://asciinema.org/a/621943)
+# ComfyUI
 
 ## Quick Start
 
@@ -18,32 +8,25 @@ Preview:
 4. Have roughly 20GB of space ready for default models and room to grow for any others you might want to add!
 
 ```
-docker run --name comfyui-magic -p 8188:8188 --gpus all -it --rm -v magic:/storage futrlabsmagic/comfyui-magic:latest
+docker run --name comfyui -p 8188:8188 --gpus all -it --rm -v comfy:/storage fcogomez/comfyui:latest
 ```
 
 ### Run it as a service
 
 ```
-docker run -d --name comfyui-magic --restart=unless-stopped -p 8188:8188 --gpus all -it -v magic:/storage futrlabsmagic/comfyui-magic:latest
+docker run -d --name comfyui --restart=unless-stopped -p 8188:8188 --gpus all -it -v comfy:/storage fcogomez/comfyui:latest
 ```
 
-### Auto accept terms and run as service
+### Auto accept terms and run as service (verify)
 ```
 docker run -e AUTOACCEPT=yes -d --name comfyui-magic --restart=unless-stopped -p 8188:8188 --gpus all -it -v magic:/storage futrlabsmagic/comfyui-magic:latest
 ```
 
-## Earn USDC and FUTR
-
-If you'd like to earn money while your GPU isn't processing ComfyUI workflows, sign up here and run the command provided:
-
-[https://www.minethefutr.com](https://www.minethefutr.com)
-
-
 ## Features
 
-### Prepackaged Custom Nodes for Your Sanity
+### Prepackaged Custom Nodes
 
-Currently, we automatically bake in stable mixtures of these popular custom nodes:
+Popular custom nodes:
 
 - https://github.com/ltdrdata/ComfyUI-Inspire-Pack.git
 - https://github.com/ltdrdata/ComfyUI-Impact-Pack.git 
