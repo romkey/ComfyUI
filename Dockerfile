@@ -12,7 +12,7 @@ RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesourc
 RUN apt update 
 RUN apt install -y nodejs 
 
-RUN cd /root && npm install request chokidar form-data ws glob express axios @aws-sdk/client-s3 @aws-sdk/credential-providers dotenv bull
+RUN cd /root && npm install request chokidar form-data ws glob express axios dotenv bull
 
 RUN pip install gradio opencv-python kornia loguru scikit-image onnx onnxruntime-gpu lpips ultralytics python_bidi arabic_reshaper 
 RUN pip install torchvision gitpython timm addict yapf insightface numba
@@ -77,7 +77,6 @@ COPY ./extra_downloads.yml /extra_downloads.yml
 
 COPY ./magic /bin/magic
 COPY ./.env /root/.env
-COPY ./heartbeat.js /root/heartbeat.js
 
 RUN mv /opt/conda/bin/ffmpeg /opt/conda/bin/ffmpeg-ancient
 RUN ln -s /usr/bin/ffmpeg /opt/conda/bin/ffmpeg

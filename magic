@@ -2,7 +2,7 @@
 set -e
 
 fun_echo() {
-  toilet -w 90 -f term --gay -F border: $1 
+  toilet -w 90 -f term --awesomepanda -F border: $1 
 }
 
 if [ ! -d "/storage" ]; then
@@ -30,10 +30,7 @@ fi
 
 touch /storage/accepted
 
-toilet ComfyUI Magic -w 90 -f pagga -F border:
-
-fun_echo "Proudly sponsored by MineTheFutr.com"
-
+toilet ComfyUI -w 90 -f pagga -F border:
 
 mkdir -p /storage/shared_models/
 mkdir -p /storage/custom_nodes/
@@ -110,22 +107,5 @@ yq e '.custom_nodes[]' $yaml | while read -r repo; do
   fi
 done
 
-if [ -z "${SUPPLIER_ID}" ]; then
-  fun_echo "If you'd like to earn during your idle GPU time, go to MineTheFutr.com"
-
-  fun_echo "Starting ComfyUI..."
-  cd /storage/ComfyUI && python main.py --listen 0.0.0.0 --extra-model-paths-config /extra_model_paths.yml --disable-xformers
-else
-  fun_echo "FUTR SUPPLIER_ID Detected."
-  fun_echo "Connecting to MineTheFutr.com with ID ${SUPPLIER_ID}"
-
-  while true; do
-    if [ "${PRODUCTION}" != false ]; then
-      fun_echo "Updating heartbeat.js before starting..."
-      wget --no-cache -O ~/heartbeat.js https://raw.githubusercontent.com/FUTRlabs/ComfyUI-Magic/main/heartbeat.js
-    fi
-
-    (cd ~/ && node ~/heartbeat.js) || true 
-    pkill -9 python
-  done
-fi
+fun_echo "Starting ComfyUI..."
+cd /storage/ComfyUI && python main.py --listen 0.0.0.0 --extra-model-paths-config /extra_model_paths.yml --disable-xformers
