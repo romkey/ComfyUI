@@ -1,0 +1,21 @@
+name: ComfyUI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build and Push Image
+      run: | 
+        echo "${{ secrets.DOCKERPW }}" | docker login -u "fcogomez" --password-stdin
+        docker image build -t fcogomez/comfyui:v1 .
+        docker push fcogomez/comfyui:$(date +%s)
