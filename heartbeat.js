@@ -21,7 +21,7 @@ if(process.env.PRODUCTION === 'false') {
 } 
 
 const versionFilePath = '/version';
-const expectedVersion = '0.3.4';
+const expectedVersion = '0.3.6';
 
 function outOfDate() {
   console.log("YOUR CONTAINER IS OUT OF DATE. STOP THIS CONTAINER AND THEN RUN: ");
@@ -253,7 +253,7 @@ async function processJob(job, done) {
     }).catch(
       async function (error) {
         console.log("COMFY ERROR PROCESSING WORKFLOW:",error)
-        done(new Error("COMFY WORKFLOW ERROR:\n\n" + getLast100LogLines()));
+        done(new Error("SUPPLIER " + supplierID + ": COMFY WORKFLOW ERROR:\n\n" + getLast100LogLines()));
         await resumeAllQueues();
         return false;
       }
@@ -295,7 +295,7 @@ async function processJob(job, done) {
       try {
         var outputURLs = await processFiles(directoryPath, prefix, job.id);
 
-        console.log(`Job ${job.id} completed and uploaded: ${outputURLs.join(",")}`);
+        console.log(`Job ${job.id} completed and uploaded.`);
 
         done(null, {images: outputURLs, supplier_id: supplierID, gpu_stats: gpuReadings});
       } catch (readError) {
