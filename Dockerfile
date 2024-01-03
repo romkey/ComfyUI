@@ -65,6 +65,7 @@ RUN wget -nc -O /workspace/ComfyUI/models/upscale_models/4x-Rybu.pth https://obj
 RUN wget -nc -O /workspace/ComfyUI/models/upscale_models/4xPSNR.pth https://huggingface.co/uwg/upscaler/resolve/main/ESRGAN/4xPSNR.pth
 #COPY ./models/4xPSNR.pth /workspace/ComfyUI/models/upscale_models/4xPSNR.pth
 
+RUN mkdir -p /workspace/ComfyUI/models/cc,vm/
 RUN mkdir -p /workspace/ComfyUI/models/embeddings/
 COPY ./models/embeddings/* /workspace/ComfyUI/models/embeddings/
 RUN mkdir -p /workspace/ComfyUI/input/negatives
