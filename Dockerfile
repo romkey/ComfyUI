@@ -67,6 +67,8 @@ RUN wget -nc -O /workspace/ComfyUI/models/upscale_models/4xPSNR.pth https://hugg
 
 RUN mkdir -p /workspace/ComfyUI/models/cc,vm/
 RUN mkdir -p /workspace/ComfyUI/models/embeddings/
+RUN mkdir -p ./models/embeddings/
+RUN mkdir -p ./negative_prompts/
 COPY ./models/embeddings/* /workspace/ComfyUI/models/embeddings/
 RUN mkdir -p /workspace/ComfyUI/input/negatives
 COPY ./negative_prompts/* /workspace/ComfyUI/input/negatives/
