@@ -1,4 +1,4 @@
-FROM pytorch/pytorch:2.1.0-cuda11.8-cudnn8-runtime
+FROM pytorch/pytorch:2.1.2-cuda12.1-cudnn8-runtime
 
 RUN apt update -y
 RUN DEBIAN_FRONTEND=noninteractive TZ=America/Chicago apt install -y sudo build-essential iproute2 wget ncurses-bin figlet toilet vim nano tig curl git htop zsh ffmpeg tmux jq ca-certificates gnupg
@@ -22,7 +22,7 @@ COPY ./.zshrc /root/.zshrc
 
 WORKDIR  /workspace/
 
-RUN git clone https://github.com/comfyanonymous/ComfyUI.git /workspace/ComfyUI && cd ComfyUI && git reset --hard 777f6b15225197898a5f49742682a2be859072d7
+RUN git clone https://github.com/comfyanonymous/ComfyUI.git /workspace/ComfyUI
 RUN git clone https://github.com/ltdrdata/ComfyUI-Manager.git /workspace/ComfyUI/custom_nodes/ComfyUI-Manager
 
 
@@ -87,7 +87,5 @@ COPY ./.env /root/.env
 RUN mv /opt/conda/bin/ffmpeg /opt/conda/bin/ffmpeg-ancient
 RUN ln -s /usr/bin/ffmpeg /opt/conda/bin/ffmpeg
 WORKDIR /storage/ComfyUI
-
-RUN pip install openai==0.28 numexpr
 
 CMD ["/bin/magic"]
