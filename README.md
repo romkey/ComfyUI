@@ -8,13 +8,13 @@
 4. Have roughly 20GB of space ready for default models and room to grow for any others you might want to add!
 
 ```
-docker run --name comfyui -p 8188:8188 --gpus all -it --rm -v comfy:/storage fcogomez/comfyui:latest
+docker run --name comfyui -p 8188:8188 --gpus all -it --rm -v comfy:/storage fcogomez/comfy-ui:latest
 ```
 
 ### Run it as a service
 
 ```
-docker run -d --name comfyui --restart=unless-stopped -p 8188:8188 --gpus all -it -v comfy:/storage fcogomez/comfyui:latest
+docker run -d --name comfyui --restart=unless-stopped -p 8188:8188 --gpus all -it -v comfy:/storage fcogomez/comfy-ui:latest
 ```
 
 ## Features
